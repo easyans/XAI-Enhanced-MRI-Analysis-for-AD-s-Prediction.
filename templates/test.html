@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segmented Image</title>
+</head>
+<body>
+    <h1>Segmented Image</h1>
+    <form action="{% url 'segment_image' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="image">
+        <button type="submit">Upload and Segment</button>
+    </form>
+    
+    {% if segmented_image_url %}
+    <img src="{{ segmented_image_url }}" alt="Segmented Image">
+    {% endif %}
+</body>
+</html>
